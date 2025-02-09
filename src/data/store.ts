@@ -4,9 +4,12 @@ import usersReducer from "./users";
 
 const store = configureStore({
   reducer: {
-    sesions: sessionsReducer,
+    sessions: sessionsReducer,
     users: usersReducer,
   },
 });
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 export default store;

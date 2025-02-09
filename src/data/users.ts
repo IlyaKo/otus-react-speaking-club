@@ -28,6 +28,26 @@ const initialState: UsersState = {
       name: "Alice",
       password: "pass123",
     },
+    {
+      id: 5,
+      name: "Bob",
+      password: "pass123",
+    },
+    {
+      id: 6,
+      name: "Charlie",
+      password: "pass123",
+    },
+    {
+      id: 7,
+      name: "David",
+      password: "pass123",
+    },
+    {
+      id: 8,
+      name: "Eve",
+      password: "pass123",
+    },
   ],
   error: "",
 };

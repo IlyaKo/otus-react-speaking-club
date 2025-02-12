@@ -1,6 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { RootState } from "../../data/store";
 import { useSelector } from "react-redux";
+import JoinSessionButton from "../../components/JoinSessionButton/JoinSessionButton";
 
 export default function SessionDetails() {
   const { sessionId } = useParams<{ sessionId: string }>();
@@ -8,6 +9,7 @@ export default function SessionDetails() {
   const session = useSelector((state: RootState) =>
     state.sessions.data.find((session) => session.id === Number(sessionId))
   );
+  const user = useSelector((state: RootState) => state.auth.user);
 
   if (!session) {
     navigate("/not-found");
@@ -30,10 +32,16 @@ export default function SessionDetails() {
         ):
         <ol>
           {session.participants.map((participant) => (
-            <li key={participant.userId}>{participant.name}</li>
+            <li key={participant.userId}>
+              {participant.name}
+              {participant.userId === user?.id && (
+                <strong>{" (it's you!)"}</strong>
+              )}
+            </li>
           ))}
         </ol>
       </p>
+      <JoinSessionButton session={session} />
     </div>
   );
 }

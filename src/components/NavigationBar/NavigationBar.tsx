@@ -7,23 +7,36 @@ import { logout } from "../../data/auth";
 
 export default function NavigationBar() {
   const dispatch = useDispatch();
-  const { authenticated } = useSelector((state: RootState) => state.auth);
+  const { authenticated, user } = useSelector((state: RootState) => state.auth);
 
   return (
-    <Navbar>
-      <Navbar.Brand className="ms-2">
-        <Nav.Link as={NavLink} to={"home"}>
-          Speaking club
-        </Nav.Link>
-      </Navbar.Brand>
-      <Nav variant="pills" className="mr-auto">
-        <Nav.Link as={NavLink} to={"home"}>
-          Home
-        </Nav.Link>
-        <Nav.Link as={NavLink} to={"sessions"}>
-          Sessions
-        </Nav.Link>
-        {!authenticated ? (
+    <Navbar bg="light" className="justify-content-between">
+      <Nav className="mr-auto align-items-center">
+        <Navbar.Brand className="ms-2">
+          <Nav.Link as={NavLink} to={"home"}>
+            Speaking club
+          </Nav.Link>
+        </Navbar.Brand>
+        <Nav variant="pills">
+          <Nav.Link as={NavLink} to={"home"}>
+            Home
+          </Nav.Link>
+          <Nav.Link as={NavLink} to={"sessions"}>
+            Sessions
+          </Nav.Link>
+        </Nav>
+      </Nav>
+      <Nav variant="pills" className="me-2">
+        {authenticated ? (
+          <>
+            <Nav.Item className="d-flex align-items-center">
+              <span className="navbar-text">Hello, {user?.name}!</span>
+            </Nav.Item>
+            <Nav.Link as={NavLink} onClick={() => dispatch(logout())} to={"/"}>
+              Logout
+            </Nav.Link>
+          </>
+        ) : (
           <>
             <Nav.Link as={NavLink} to={"login"}>
               Login
@@ -32,10 +45,6 @@ export default function NavigationBar() {
               Register
             </Nav.Link>
           </>
-        ) : (
-          <Nav.Link as={NavLink} onClick={() => dispatch(logout())} to={"/"}>
-            Logout
-          </Nav.Link>
         )}
       </Nav>
     </Navbar>

@@ -3,12 +3,12 @@ import { User } from "./models/User";
 
 interface AuthState {
   authenticated: boolean;
-  name: string;
+  user: User | null;
 }
 
 const initialAuthState: AuthState = {
   authenticated: false,
-  name: "username",
+  user: null,
 };
 
 const authSlice = createSlice({
@@ -16,13 +16,12 @@ const authSlice = createSlice({
   initialState: initialAuthState,
   reducers: {
     login(state, action: PayloadAction<User>) {
-      const { name } = action.payload;
       state.authenticated = true;
-      state.name = name;
+      state.user = action.payload;
     },
     logout(state) {
       state.authenticated = initialAuthState.authenticated;
-      state.name = initialAuthState.name;
+      state.user = initialAuthState.user;
     },
   },
 });

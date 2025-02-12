@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router";
 import { Session } from "../../data/models/Session";
 import { Button, Card } from "react-bootstrap";
-import JoinSessionButton from "../JoinSessionButton/JoinSessionButton";
+import SessionButtons from "../SessionButtons/SessionButtons";
 
 interface SessionListElementProps {
   session: Session;
@@ -23,8 +23,10 @@ const SessionListElement: React.FC<SessionListElementProps> = ({ session }) => {
         </Card.Text>
 
         <div>
-          <Button onClick={handleClick}>open</Button>
-          <JoinSessionButton session={session} />
+          <Button variant="info" className="mx-2" onClick={handleClick}>
+            open
+          </Button>
+          <SessionButtons session={session} />
         </div>
       </Card.Body>
     </Card>

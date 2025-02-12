@@ -1,7 +1,7 @@
 import { useNavigate, useParams } from "react-router";
 import { RootState } from "../../data/store";
 import { useSelector } from "react-redux";
-import JoinSessionButton from "../../components/JoinSessionButton/JoinSessionButton";
+import SessionButtons from "../../components/SessionButtons/SessionButtons";
 
 export default function SessionDetails() {
   const { sessionId } = useParams<{ sessionId: string }>();
@@ -27,6 +27,7 @@ export default function SessionDetails() {
       </div>
       <h2>{session.topic}</h2>
       <p>Date: {session.date}</p>
+      <SessionButtons session={session} />
       <p>
         Participants ({session.participants.length} of {session.maxParticipants}
         ):
@@ -41,7 +42,6 @@ export default function SessionDetails() {
           ))}
         </ol>
       </p>
-      <JoinSessionButton session={session} />
     </div>
   );
 }

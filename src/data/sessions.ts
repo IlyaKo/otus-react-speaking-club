@@ -95,11 +95,26 @@ const sessionsSlice = createSlice({
         state.error = "Session not found";
       }
     },
+    removeUserFromSession: (
+      state,
+      action: PayloadAction<{ sessionId: number; user: User }>
+    ) => {
+      const { sessionId, user } = action.payload;
+      const session = state.data.find((session) => session.id === sessionId);
+      if (session) {
+        session.participants = session.participants.filter(
+          (participant) => participant.userId !== user.id
+        );
+      } else {
+        state.error = "Session not found";
+      }
+    },
     clearSessionsError: (state) => {
       state.error = "";
     },
   },
 });
 
-export const { addUserToSession, clearSessionsError } = sessionsSlice.actions;
+export const { addUserToSession, removeUserFromSession, clearSessionsError } =
+  sessionsSlice.actions;
 export default sessionsSlice.reducer;

@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import sessionsReducer from "./sessions";
 import usersReducer from "./users";
+import authReducer from "./auth";
 
 const store = configureStore({
   reducer: {
     sessions: sessionsReducer,
     users: usersReducer,
+    auth: authReducer,
   },
 });
 

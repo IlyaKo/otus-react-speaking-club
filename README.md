@@ -15,3 +15,9 @@ A practice project for building a platform where users can schedule and manage a
 - [React Router](https://reactrouter.com/home)
 - [React Bootstrap](https://react-bootstrap.netlify.app/)
 - [TypeScript](https://www.typescriptlang.org/docs/handbook/react.html)
+
+## Screenshots
+### Sessions page
+![Sessions screenshot](https://github.com/IlyaKo/otus-react-speaking-club/blob/a510f356b68705b8a692adbe8ecf6969cb5f79fd/screenshots/sessions.png)
+### Registration page
+![Registration screenshot](https://github.com/IlyaKo/otus-react-speaking-club/blob/a510f356b68705b8a692adbe8ecf6969cb5f79fd/screenshots/registration.png)

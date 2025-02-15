@@ -4,8 +4,6 @@ import { RootState } from "../../data/store";
 
 export default function SessionList() {
   const sessions = useSelector((state: RootState) => state.sessions.data);
-
-  // Sort sessions by date
   const sortedSessions = [...sessions].sort(
     (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
   );

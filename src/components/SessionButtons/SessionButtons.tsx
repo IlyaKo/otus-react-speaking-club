@@ -29,10 +29,10 @@ const SessionButtons: React.FC<SessionButtonsProps> = ({ session }) => {
   return (
     <ButtonGroup>
       <Button variant="primary" disabled={!canJoin} onClick={handleJoinClick}>
-        join
+        Join
       </Button>
       <Button variant="danger" disabled={!canLeave} onClick={handleLeaveClick}>
-        leave
+        Leave
       </Button>
     </ButtonGroup>
   );

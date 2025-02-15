@@ -10,13 +10,12 @@ export default function NavigationBar() {
   const { authenticated, user } = useSelector((state: RootState) => state.auth);
 
   return (
-    <Navbar bg="light" className="justify-content-between">
+    <Navbar variant="dark" bg="dark" className="justify-content-between">
       <Nav className="mr-auto align-items-center">
-        <Navbar.Brand className="ms-2">
-          <Nav.Link as={NavLink} to={"home"}>
-            Speaking club
-          </Nav.Link>
+        <Navbar.Brand className="mx-4" as={NavLink} to={"home"}>
+          Speaking club
         </Navbar.Brand>
+
         <Nav variant="pills">
           <Nav.Link as={NavLink} to={"home"}>
             Home
@@ -30,7 +29,9 @@ export default function NavigationBar() {
         {authenticated ? (
           <>
             <Nav.Item className="d-flex align-items-center">
-              <span className="navbar-text">Hello, {user?.name}!</span>
+              <span className="navbar-text">
+                <strong>Hello, {user?.name}!</strong>
+              </span>
             </Nav.Item>
             <Nav.Link as={NavLink} onClick={() => dispatch(logout())} to={"/"}>
               Logout

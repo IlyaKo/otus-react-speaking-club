@@ -61,7 +61,11 @@ const usersSlice = createSlice({
         (user) => user.name === action.payload.name
       );
       if (!userExists) {
-        state.data.push(action.payload);
+        const user = action.payload;
+        if (user.id === 0) {
+          user.id = Math.max(...state.data.map((o) => o.id), 0) + 1;
+        }
+        state.data.push(user);
       } else {
         state.error = "User with this name already exists";
       }
